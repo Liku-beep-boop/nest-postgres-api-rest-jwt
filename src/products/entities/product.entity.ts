@@ -1,72 +1,35 @@
-import { Column, DeleteDateColumn, Entity } from 'typeorm';
+import { Category } from 'src/category/entities/category.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  DeleteDateColumn,
+} from 'typeorm';
 
-@Entity()
+@Entity('product')
 export class Product {
-  @Column({ primary: true, generated: true })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @Column()
-  description: string;
-
-  @Column()
+  @Column('decimal', { precision: 10, scale: 2 })
   price: number;
-
-  @Column({ type: 'text', array: true })
-  images: string[];
-
-  @Column()
-  category: string;
-
-  @Column({ type: 'text', array: true })
-  tags: string[];
-
-  @Column()
-  isNew: boolean;
-
-  @Column()
-  isSale: boolean;
-
-  @Column()
-  discount: number;
 
   @Column()
   stock: number;
 
-  @Column()
-  sku: string;
-
-  @Column()
-  dimensions: string;
-
-  @Column({ type: 'text', array: true })
-  materials: string[];
-
-  @Column({ type: 'text', array: true })
-  colors: string[];
-
-  @Column({ type: 'text', array: true })
-  sizes: string[];
-
-  @DeleteDateColumn()
-  deletedAt: Date;
-}
-
-/* {
-  @Column({ primary: true, generated: true })
-  id: number;
-
-  @Column()
-  name: string;
-
-  @Column()
+  @Column('text')
   description: string;
 
-  @Column()
-  price: number;
+  @Column('simple-array')
+  images: string[];
 
   @DeleteDateColumn()
   deletedAt: Date;
-} */
+
+  @ManyToOne(() => Category, (category) => category.id, { eager: true })
+  category: Category;
+}
