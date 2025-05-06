@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CatsModule } from './cats/cats.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BreedsModule } from './breeds/breeds.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
@@ -32,8 +30,6 @@ import { CategoryModule } from './category/category.module';
             : null,
       },
     }),
-    CatsModule,
-    BreedsModule,
     UsersModule,
     AuthModule,
     ProductsModule,
