@@ -22,8 +22,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Ecommerce example')
-    .setDescription('The cats API description')
+    .setTitle('E-commerce API')
+    .setDescription('REST API for an e-commerce: products, categories, users and JWT authentication with roles.')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
